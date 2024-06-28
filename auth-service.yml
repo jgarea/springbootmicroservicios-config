@@ -1,7 +1,7 @@
 spring:
   datasource:
     username: postgres
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5433/springbootmicroservicios}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/springbootmicroservicios}
     password: '1234'
   jpa:
     generate-ddl: 'true'
