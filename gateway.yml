@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: saludo
+          uri: lb://saludo
+          predicates:
+            - Path=/saludo/**
+          filters:
+            - AuthenticationFilter
+        - id: auth
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8099/eureka/}
+
+#      discovery:
+#        locator:
+#          enabled: true
